@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0470b7b2-9f2e-44d7-8c06-b123518af6f7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="ShiftDiary.DTO" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:50373/ShiftService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ShiftService.xsd" MetadataType="Schema" ID="20ca8f0a-cee6-4f9f-80e1-6f0d2394d924" SourceId="1" SourceUrl="http://localhost:50373/ShiftService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ShiftService1.xsd" MetadataType="Schema" ID="1fd1fc7e-214d-42b0-bf10-2dd8a028fe30" SourceId="1" SourceUrl="http://localhost:50373/ShiftService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ShiftService.disco" MetadataType="Disco" ID="7ec6c135-1491-476b-a32d-6369b1047804" SourceId="1" SourceUrl="http://localhost:50373/ShiftService.svc?disco" />
+    <MetadataFile FileName="ShiftService.wsdl" MetadataType="Wsdl" ID="7391bf05-88cf-4623-b0ac-5ff82b053920" SourceId="1" SourceUrl="http://localhost:50373/ShiftService.svc?wsdl" />
+    <MetadataFile FileName="ShiftService2.xsd" MetadataType="Schema" ID="88c166ca-0188-437c-9fcb-0c76a16cfc18" SourceId="1" SourceUrl="http://localhost:50373/ShiftService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

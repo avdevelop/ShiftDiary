@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="ShiftDiary.ServiceApp.CalendarService" CodeBehind="CalendarService.svc.cs" Factory="Ninject.Extensions.Wcf.NinjectServiceHostFactory" %>

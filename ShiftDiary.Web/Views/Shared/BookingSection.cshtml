@@ -1,0 +1,73 @@
+﻿@using HotelManagement.Helpers;
+
+<div class="box maxheight">
+    <div class="inner">
+        <h3>@Html.AppSetting("BookingHeaderText")</h3>
+        <form action="" id="reservation-form" class="userform">
+        <fieldset>
+            <div class="field">
+                <label>
+                    @Html.AppSetting("CheckInHeaderText")</label><select id="arrDay" class="select1"><option>30</option>
+                    </select><select id="arrMonth" class="select2">
+                    </select></div>
+            <div class="field">
+                <label>
+                    @Html.AppSetting("CheckOutHeaderText")</label><select id="depDay" class="select1"><option>01</option>
+                    </select><select id="depMonth" class="select2">
+                    </select></div>
+            <div class="field">
+                Persons: &nbsp;<input type="text" value="1" />&nbsp; &nbsp; &nbsp; &nbsp; Rooms:&nbsp;
+                <input type="text" value="1" /></div>
+            <div class="button">
+                <span><span><a href="#" onclick="document.getElementById('reservationm-form').submit()">Check Availability</a></span></span></div>
+        </fieldset>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function populateBookingMonths()
+    {
+        $.ajaxSetup({ "async": false });
+        $.getJSON('/Booking/BookingMonths', function (data)
+        {
+            var options = $(".select2");
+            $.each(data, function ()
+            {
+                options.append($("<option />").val(this).text(this));
+            });
+        });        
+    }
+
+    function populateArrDays()
+    {
+        var selectedVal;
+        $('#arrMonth option:selected').each(function ()
+        {
+            selectedVal = $(this).text();
+        });
+
+        $('#arrDay option').remove();
+
+        $.getJSON('/Booking/BookingDays', { month: selectedVal }, function (data)
+        {
+            var options = $("#arrDay");
+            $.each(data, function ()
+            {
+                options.append($("<option />").val(this).text(this));
+            });
+        });
+    }
+
+    $(function ()
+    {
+        $('#arrMonth').change(function ()
+        {
+            populateArrDays();            
+        });
+
+        populateBookingMonths();
+    });   
+
+</script>

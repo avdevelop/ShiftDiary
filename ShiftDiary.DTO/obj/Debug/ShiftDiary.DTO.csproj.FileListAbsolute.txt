@@ -1,0 +1,4 @@
+C:\Users\CHRISTV\Desktop\ShiftDiary\ShiftDiary.DTO\bin\Debug\ShiftDiary.DTO.dll
+C:\Users\CHRISTV\Desktop\ShiftDiary\ShiftDiary.DTO\bin\Debug\ShiftDiary.DTO.pdb
+C:\Users\CHRISTV\Desktop\ShiftDiary\ShiftDiary.DTO\obj\Debug\ShiftDiary.DTO.dll
+C:\Users\CHRISTV\Desktop\ShiftDiary\ShiftDiary.DTO\obj\Debug\ShiftDiary.DTO.pdb
