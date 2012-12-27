@@ -1,0 +1,22 @@
+﻿@using ShiftDiary.DTO;
+
+<td align="center" style="height: 150px;" valign="top">
+    <table>
+        <tr>
+            <td>
+                <h1>@Page.week.Days[ViewBag.WeekDayCount].Date.Day</h1>
+            </td>
+        </tr>
+        @foreach (Shift shift in @Page.week.Days[ViewBag.WeekDayCount].Shifts)
+        {
+            <tr>
+                <td>
+                    <div>
+                        <img height="20px" width="20px" src=@shift.GemUrl />
+                        @Html.ActionLink(@shift.Name, "ShiftDetails", null, new {@class = "shiftName", shift_id = @shift.Id, shift_name = @shift.Name })
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</td>
