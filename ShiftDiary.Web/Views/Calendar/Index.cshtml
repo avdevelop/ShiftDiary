@@ -1,5 +1,184 @@
-﻿@{
+﻿@using ShiftDiary.DTO;
+@model Month
+@{
     ViewBag.Title = "Index";
 }
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="../../Content/css/ui-lightness/jquery-ui-1.9.2.custom.min.css" rel="Stylesheet" />
+    <script src="../../Content/scripts/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="../../Content/scripts/jquery-ui-1.9.2.custom.min.js" type="text/javascript"></script>
+</head>
+<body id="main_page">
+    <div style="text-align: center;">
+        <table width="1400px">
+            <thead>
+                <tr>
+                    <td align="left" style="width: 200px;">
+                        <h1>@Html.ActionLink("<<", "GotoMonth", "Calendar", new { gotoMonth = @ViewBag.PrevMonth, gotoYear = @ViewBag.PrevYear }, null)</h1>
+                    </td>
+                    <td style="width: 1000px;" colspan="5" align="center">
+                        <h1>
+                            @ViewBag.CurrentMonth &nbsp;&nbsp;&nbsp;&nbsp;@ViewBag.CurrentYear
+                        </h1>
+                    </td>
+                    <td style="width: 200px;" align="right">
+                        <h1>@Html.ActionLink(">>", "GotoMonth", "Calendar", new { gotoMonth = @ViewBag.NextMonth, gotoYear = @ViewBag.NextYear }, null)</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;" align="center">
+                        Monday
+                    </td>
+                    <td style="width: 200px;" align="center">
+                        Tuesday
+                    </td>
+                    <td style="width: 200px;" align="center">
+                        Wednesday
+                    </td>
+                    <td style="width: 200px;" align="center">
+                        Thursday
+                    </td>
+                    <td style="width: 200px;" align="center">
+                        Friday
+                    </td>
+                    <td style="width: 200px;" align="center">
+                        Saturday
+                    </td>
+                    <td style="width: 200px;" align="center">
+                        Sunday
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Week week in Model.Weeks)
+            {
+                    <tr>
+                        @{
+                        ViewBag.WeekDayCount = 0;
+                        }
+                        @for (int i = 0; i < 7; i++)
+                    {
+                        if (i == 0 && week.Days.Count > ViewBag.WeekDayCount && week.Days[ViewBag.WeekDayCount].Date.DayOfWeek == DayOfWeek.Monday)
+                        {
+                            @RenderPage("~/Views/Shared/CalendarCell.cshtml", new { week = week });                            
+                            ViewBag.WeekDayCount++;
+                        }
+                        else if(i ==0)
+                        {
+                            <td>
+                            </td>
+                        }
+                        
+                        if (i == 1 && week.Days.Count > ViewBag.WeekDayCount && week.Days[ViewBag.WeekDayCount].Date.DayOfWeek == DayOfWeek.Tuesday)
+                        {
+                            @RenderPage("~/Views/Shared/CalendarCell.cshtml", new { week = week });
+                            ViewBag.WeekDayCount++;
+                        }
+                        else if(i == 1)
+                        {
+                            <td>
+                            </td>
+                        }
 
-<h2>Index</h2>
+                        if (i == 2 && week.Days.Count > ViewBag.WeekDayCount && week.Days[ViewBag.WeekDayCount].Date.DayOfWeek == DayOfWeek.Wednesday)
+                        {
+                            @RenderPage("~/Views/Shared/CalendarCell.cshtml", new { week = week });
+                            ViewBag.WeekDayCount++;
+                        }
+                        else if (i == 2)
+                        {
+                            <td>
+                            </td>
+                        }
+
+                        if (i == 3 && week.Days.Count > ViewBag.WeekDayCount && week.Days[ViewBag.WeekDayCount].Date.DayOfWeek == DayOfWeek.Thursday)
+                        {
+                            @RenderPage("~/Views/Shared/CalendarCell.cshtml", new { week = week });    
+                            ViewBag.WeekDayCount++;
+                        }
+                        else if (i == 3)
+                        {
+                            <td>
+                            </td>
+                        }
+
+
+                        if (i == 4 && week.Days.Count > ViewBag.WeekDayCount && week.Days[ViewBag.WeekDayCount].Date.DayOfWeek == DayOfWeek.Friday)
+                        {
+                            @RenderPage("~/Views/Shared/CalendarCell.cshtml", new { week = week });
+                            ViewBag.WeekDayCount++;
+                        }
+                        else if (i == 4)
+                        {
+                            <td>
+                            </td>
+                        }
+
+                        if (i == 5 && week.Days.Count > ViewBag.WeekDayCount && week.Days[ViewBag.WeekDayCount].Date.DayOfWeek == DayOfWeek.Saturday)
+                        {
+                            @RenderPage("~/Views/Shared/CalendarCell.cshtml", new { week = week });
+                            ViewBag.WeekDayCount++;
+                        }
+                        else if (i == 5)
+                        {
+                            <td align="center">
+                            </td>
+                        }
+
+                        if (i == 6 && week.Days.Count > ViewBag.WeekDayCount && week.Days[ViewBag.WeekDayCount].Date.DayOfWeek == DayOfWeek.Sunday)
+                        {
+                            @RenderPage("~/Views/Shared/CalendarCell.cshtml", new { week = week });
+                            ViewBag.WeekDayCount++;
+                        }
+                        else if (i == 6)
+                        {
+                            <td>
+                            </td>
+                        }
+                    }
+                    </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    <div>
+    </div>
+    <script type="text/javascript">
+
+        $.ajaxSetup({ cache: false });
+
+        $(document).ready(function ()
+        {
+            $(".shiftName").live("click", function (e)
+            {
+                e.preventDefault();
+
+                $("<div></div>")
+            .addClass("dialog")
+            .attr("id", $(this)
+            .attr("shift_id"))
+            .appendTo("body")
+            .dialog({
+                title: $(this).attr("shift_name"),
+                close: function () { $(this).remove(); },
+                modal: true,
+                height: 250,
+                width: 400,
+                left: 0
+
+            })
+            .load(this.href);
+                    });
+
+            $(".close").live("click", function (e)
+            {
+                e.preventDefault();
+                $(this).closest(".dialog").dialog("close");
+            });
+        });
+    </script>
+</body>
+</html>

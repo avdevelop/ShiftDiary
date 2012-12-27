@@ -23,5 +23,11 @@ namespace ShiftDiary.ServiceApp
 
         [OperationContract]
         void Delete(Shift obj);
+
+        [OperationContract]
+        IEnumerable<Shift> GetShiftForMonth(Month month);
+
+        [OperationContract]
+        IEnumerable<Shift> GetShiftForDay(Day day);        
     }
 }

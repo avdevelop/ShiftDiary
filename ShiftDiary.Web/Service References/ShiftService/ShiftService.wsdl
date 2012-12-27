@@ -31,6 +31,18 @@
   <wsdl:message name="IShiftService_Delete_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteResponse" />
   </wsdl:message>
+  <wsdl:message name="IShiftService_GetShiftForMonth_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetShiftForMonth" />
+  </wsdl:message>
+  <wsdl:message name="IShiftService_GetShiftForMonth_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetShiftForMonthResponse" />
+  </wsdl:message>
+  <wsdl:message name="IShiftService_GetShiftForDay_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetShiftForDay" />
+  </wsdl:message>
+  <wsdl:message name="IShiftService_GetShiftForDay_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetShiftForDayResponse" />
+  </wsdl:message>
   <wsdl:portType name="IShiftService">
     <wsdl:operation name="GetAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IShiftService/GetAll" message="tns:IShiftService_GetAll_InputMessage" />
@@ -47,6 +59,14 @@
     <wsdl:operation name="Delete">
       <wsdl:input wsaw:Action="http://tempuri.org/IShiftService/Delete" message="tns:IShiftService_Delete_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IShiftService/DeleteResponse" message="tns:IShiftService_Delete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShiftForMonth">
+      <wsdl:input wsaw:Action="http://tempuri.org/IShiftService/GetShiftForMonth" message="tns:IShiftService_GetShiftForMonth_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IShiftService/GetShiftForMonthResponse" message="tns:IShiftService_GetShiftForMonth_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShiftForDay">
+      <wsdl:input wsaw:Action="http://tempuri.org/IShiftService/GetShiftForDay" message="tns:IShiftService_GetShiftForDay_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IShiftService/GetShiftForDayResponse" message="tns:IShiftService_GetShiftForDay_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IShiftService" type="tns:IShiftService">
@@ -80,6 +100,24 @@
     </wsdl:operation>
     <wsdl:operation name="Delete">
       <soap:operation soapAction="http://tempuri.org/IShiftService/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShiftForMonth">
+      <soap:operation soapAction="http://tempuri.org/IShiftService/GetShiftForMonth" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShiftForDay">
+      <soap:operation soapAction="http://tempuri.org/IShiftService/GetShiftForDay" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

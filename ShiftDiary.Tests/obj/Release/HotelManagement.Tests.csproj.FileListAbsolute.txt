@@ -1,1 +1,0 @@
-C:\Users\CHRISTV\Desktop\HotelManagement\HotelManagement.Tests\obj\Release\HotelManagement.Tests.csprojResolveAssemblyReference.cache

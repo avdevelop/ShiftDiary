@@ -23,22 +23,22 @@ namespace ShiftDiary.ServiceApp
 
         public IEnumerable<Calendar> GetAll()
         {
-            return (IEnumerable<Calendar>)calendarRepository.Get();            
+            return Mapper.Map<IEnumerable<CalendarHBM>, IEnumerable<Calendar>>(calendarRepository.Get());
         }
 
         public Calendar GetCalendar(int id)
         {
-            return (Calendar)calendarRepository.Get(id);
+            return Mapper.Map<CalendarHBM, Calendar>(calendarRepository.Get(id));
         }
 
         public void Save(Calendar obj)
         {
-            calendarRepository.Save((CalendarHBM)obj);
+            calendarRepository.Save(Mapper.Map<Calendar, CalendarHBM>(obj));
         }
 
         public void Delete(Calendar obj)
         {
-            calendarRepository.Delete((CalendarHBM)obj);
+            calendarRepository.Delete(Mapper.Map<Calendar, CalendarHBM>(obj));
         }
     }
 }

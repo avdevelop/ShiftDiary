@@ -1,9 +1,0 @@
-C:\Users\CHRISTV\Desktop\ShiftDiary\ShiftDiary.Repository\bin\Debug\hibernate.cfg.xml
-C:\Users\CHRISTV\Desktop\ShiftDiary\ShiftDiary.Repository\bin\Debug\ShiftDiary.Repository.dll
-C:\Users\CHRISTV\Desktop\ShiftDiary\ShiftDiary.Repository\bin\Debug\ShiftDiary.Repository.pdb
-C:\Users\CHRISTV\Desktop\ShiftDiary\ShiftDiary.Repository\bin\Debug\Iesi.Collections.dll
-C:\Users\CHRISTV\Desktop\ShiftDiary\ShiftDiary.Repository\bin\Debug\NHibernate.dll
-C:\Users\CHRISTV\Desktop\ShiftDiary\ShiftDiary.Repository\bin\Debug\Iesi.Collections.xml
-C:\Users\CHRISTV\Desktop\ShiftDiary\ShiftDiary.Repository\bin\Debug\NHibernate.xml
-C:\Users\CHRISTV\Desktop\ShiftDiary\ShiftDiary.Repository\obj\Debug\ShiftDiary.Repository.dll
-C:\Users\CHRISTV\Desktop\ShiftDiary\ShiftDiary.Repository\obj\Debug\ShiftDiary.Repository.pdb

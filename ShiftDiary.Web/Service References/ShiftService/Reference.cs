@@ -26,6 +26,12 @@ namespace ShiftDiary.Web.ShiftService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShiftService/Delete", ReplyAction="http://tempuri.org/IShiftService/DeleteResponse")]
         void Delete(ShiftDiary.DTO.Shift obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShiftService/GetShiftForMonth", ReplyAction="http://tempuri.org/IShiftService/GetShiftForMonthResponse")]
+        ShiftDiary.DTO.Shift[] GetShiftForMonth(ShiftDiary.DTO.Month month);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShiftService/GetShiftForDay", ReplyAction="http://tempuri.org/IShiftService/GetShiftForDayResponse")]
+        ShiftDiary.DTO.Shift[] GetShiftForDay(ShiftDiary.DTO.Day day);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -69,6 +75,14 @@ namespace ShiftDiary.Web.ShiftService {
         
         public void Delete(ShiftDiary.DTO.Shift obj) {
             base.Channel.Delete(obj);
+        }
+        
+        public ShiftDiary.DTO.Shift[] GetShiftForMonth(ShiftDiary.DTO.Month month) {
+            return base.Channel.GetShiftForMonth(month);
+        }
+        
+        public ShiftDiary.DTO.Shift[] GetShiftForDay(ShiftDiary.DTO.Day day) {
+            return base.Channel.GetShiftForDay(day);
         }
     }
 }

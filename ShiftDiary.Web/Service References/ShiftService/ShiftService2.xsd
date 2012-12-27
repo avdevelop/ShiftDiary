@@ -17,4 +17,52 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Shift" nillable="true" type="tns:Shift" />
+  <xs:complexType name="Month">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MonthInt" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Weeks" nillable="true" type="tns:ArrayOfWeek" />
+      <xs:element minOccurs="0" name="Year" nillable="true" type="tns:Year" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Month" nillable="true" type="tns:Month" />
+  <xs:complexType name="ArrayOfWeek">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Week" nillable="true" type="tns:Week" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWeek" nillable="true" type="tns:ArrayOfWeek" />
+  <xs:complexType name="Week">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Days" nillable="true" type="tns:ArrayOfDay" />
+      <xs:element minOccurs="0" name="Index" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Week" nillable="true" type="tns:Week" />
+  <xs:complexType name="ArrayOfDay">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Day" nillable="true" type="tns:Day" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDay" nillable="true" type="tns:ArrayOfDay" />
+  <xs:complexType name="Day">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Shifts" nillable="true" type="tns:ArrayOfShift" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Day" nillable="true" type="tns:Day" />
+  <xs:complexType name="Year">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Months" nillable="true" type="tns:ArrayOfMonth" />
+      <xs:element minOccurs="0" name="Name" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Year" nillable="true" type="tns:Year" />
+  <xs:complexType name="ArrayOfMonth">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Month" nillable="true" type="tns:Month" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMonth" nillable="true" type="tns:ArrayOfMonth" />
 </xs:schema>

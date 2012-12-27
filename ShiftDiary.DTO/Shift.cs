@@ -13,6 +13,7 @@ namespace ShiftDiary.DTO
         public virtual long ShiftStart { get; set; }
         public virtual long ShiftEnd { get; set; }
         public virtual int ShiftBreakMins { get; set; }
+        public virtual string GemUrl { get; set; }
 
         public override bool Equals(object obj)
         {

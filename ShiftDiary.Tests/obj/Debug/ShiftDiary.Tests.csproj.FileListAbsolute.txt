@@ -1,2 +1,0 @@
-C:\Users\CHRISTV\Desktop\ShiftDiary\ShiftDiary.Tests\obj\Debug\ShiftDiary.Tests.csprojResolveAssemblyReference.cache
-C:\Users\CHRISTV\Desktop\ShiftDiary\ShiftDiary.Tests\obj\Debug\HotelManagement.Tests.pdb

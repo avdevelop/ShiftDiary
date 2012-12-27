@@ -23,22 +23,32 @@ namespace ShiftDiary.ServiceApp
 
         public IEnumerable<Shift> GetAll()
         {
-            return (IEnumerable<Shift>)shiftRepository.Get();
+            return Mapper.Map<IEnumerable<ShiftHBM>, IEnumerable<Shift>>(shiftRepository.Get());
         }
 
         public Shift GetShift(int id)
         {
-            return (Shift)shiftRepository.Get(id);
+            return Mapper.Map<ShiftHBM, Shift>(shiftRepository.Get(id));
         }
 
         public void Save(Shift obj)
         {
-            shiftRepository.Save((ShiftHBM)obj);
+            shiftRepository.Save(Mapper.Map<Shift, ShiftHBM>(obj));
         }
 
         public void Delete(Shift obj)
         {
-            shiftRepository.Delete((ShiftHBM)obj);
+            shiftRepository.Delete(Mapper.Map<Shift, ShiftHBM>(obj));
+        }
+
+        public IEnumerable<Shift> GetShiftForMonth(Month month)
+        {
+            return Mapper.Map<IEnumerable<ShiftHBM>, IEnumerable<Shift>>(shiftRepository.Get().Where(s => s.ShiftDate.Month == month.MonthInt && s.ShiftDate.Year == month.Year.Name));
+        }
+
+        public IEnumerable<Shift> GetShiftForDay(Day day)
+        {
+            return Mapper.Map<IEnumerable<ShiftHBM>, IEnumerable<Shift>>(shiftRepository.Get().Where(s => s.ShiftDate == day.Date));
         }
     }
 }

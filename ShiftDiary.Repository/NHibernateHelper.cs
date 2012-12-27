@@ -26,8 +26,9 @@ namespace ShiftDiary.Repository
 
         public static ISession GetCurrentSession()
         {
-            if (currentSession == null)
+            if (currentSession == null || currentSession.IsOpen == false)
             {
+                currentSession = null;
                 currentSession = sessionFactory.OpenSession();                
             }
 

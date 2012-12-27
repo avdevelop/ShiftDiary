@@ -17,13 +17,13 @@ namespace ShiftDiary.ServiceApp
     {
         protected override IKernel CreateKernel()
         {            
-            //Mapper.CreateMap<HotelChain, HotelChainDTO>();
-            //Mapper.CreateMap<HotelChainDTO, HotelChain>();
+            Mapper.CreateMap<Shift, ShiftHBM>();
+            Mapper.CreateMap<ShiftHBM, Shift>();            
 
-            //Mapper.CreateMap<Hotel, HotelDTO>();
-            //Mapper.CreateMap<HotelDTO, Hotel>();            
+            Mapper.CreateMap<Calendar, CalendarHBM>();
+            Mapper.CreateMap<CalendarHBM, Calendar>();                     
             
-            //Mapper.AssertConfigurationIsValid();
+            Mapper.AssertConfigurationIsValid();
             
 
             StandardKernel kernel = new StandardKernel(new WCFNinject());

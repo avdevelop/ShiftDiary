@@ -3,42 +3,75 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ShiftDiary.DTO;
+using ShiftDiary.Web.ShiftService;
 
 namespace ShiftDiary.Web.Controllers
 {
-    public class CalendarController : Controller
+    public class CalendarController : BaseController
     {
+        private IShiftService shiftService;
+
+        public CalendarController(IShiftService shiftService)
+        {
+            this.shiftService = shiftService;
+        }
+
         //
         // GET: /Calendar/
 
         public ActionResult Index()
         {
             DateTime now = DateTime.Now;
+            return View("Index", GenerateCalendarData(now));
+        }
 
+        //
+        // GET: /Calendar/Month
+        public ActionResult GotoMonth(int gotoMonth, int gotoYear)
+        {
+            DateTime date = new DateTime(gotoYear, gotoMonth, 1);
+            return View("Index", GenerateCalendarData(date));
+        }
+
+        public Month GenerateCalendarData(DateTime now)
+        {
             ViewBag.CurrentMonth = now.ToString("MMMM");
             ViewBag.CurrentMonthInt = now.ToString("MM");
             ViewBag.CurrentYear = now.ToString("yyyy");
 
-            List<DateTime> week = new List<DateTime>();
-            List<List<DateTime>> weeks = new List<List<DateTime>>();
+            ViewBag.NextMonth = new DateTime(int.Parse(ViewBag.CurrentYear), int.Parse(ViewBag.CurrentMonthInt), 1).AddMonths(1).Month;
+            ViewBag.PrevMonth = new DateTime(int.Parse(ViewBag.CurrentYear), int.Parse(ViewBag.CurrentMonthInt), 1).AddMonths(-1).Month;
 
-            for(int i = 1;i <= DateTime.DaysInMonth(int.Parse(ViewBag.CurrentYear), int.Parse(ViewBag.CurrentMonthInt)); i++)
+            ViewBag.NextYear = new DateTime(int.Parse(ViewBag.CurrentYear), int.Parse(ViewBag.CurrentMonthInt), 1).AddMonths(1).Year;
+            ViewBag.PrevYear = new DateTime(int.Parse(ViewBag.CurrentYear), int.Parse(ViewBag.CurrentMonthInt), 1).AddMonths(-1).Year;
+
+            Week week = new Week();
+            Month month = new Month(int.Parse(ViewBag.CurrentMonthInt), ViewBag.CurrentMonth, int.Parse(ViewBag.CurrentYear));
+
+            for (int i = 1; i <= DateTime.DaysInMonth(int.Parse(ViewBag.CurrentYear), int.Parse(ViewBag.CurrentMonthInt)); i++)
             {
                 DateTime dt = new DateTime(int.Parse(ViewBag.CurrentYear), int.Parse(ViewBag.CurrentMonthInt), i);
+                Day day = new Day(dt);
+                day.Shifts = shiftService.GetShiftForDay(day).ToList();
 
-                week.Add(dt);
+                week.Days.Add(day);
 
                 if (dt.DayOfWeek == DayOfWeek.Sunday || i == DateTime.DaysInMonth(int.Parse(ViewBag.CurrentYear), int.Parse(ViewBag.CurrentMonthInt)))
-                {                    
-                    weeks.Add(week);
-                    week = new List<DateTime>();
+                {
+                    month.Weeks.Add(week);
+                    week = new Week();
                 }
-            }
+            }            
 
-            ViewBag.Weeks = weeks;
+            ViewBag.WeekDayCount = 0;
 
-            return View("Index");
+            return month;
         }
 
+        public ActionResult ShiftDetails()
+        {
+            return View("ShiftDetails");
+        }
     }
 }

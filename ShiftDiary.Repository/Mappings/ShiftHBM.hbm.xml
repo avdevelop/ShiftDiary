@@ -12,6 +12,7 @@
     <property name="ShiftStart" not-null="false"></property>
     <property name="ShiftEnd" not-null="false"></property>
     <property name="ShiftBreakMins" not-null="false"></property>
+    <property name="GemUrl" not-null="false"></property>
   </class>
 
 </hibernate-mapping>

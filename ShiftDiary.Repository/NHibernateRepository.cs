@@ -13,8 +13,10 @@ namespace ShiftDiary.Repository
         public virtual IEnumerable<T> Get()
         {
             ISession session = NHibernateHelper.GetCurrentSession();
-            ICriteria criteria = session.CreateCriteria(typeof(T).Name);            
-            return criteria.List().OfType<T>();
+            ICriteria criteria = session.CreateCriteria(typeof(T).Name);
+            var data = criteria.List().OfType<T>().AsEnumerable();
+            session.Close();
+            return data;
         }
 
         public virtual T Get(int id)
@@ -22,7 +24,10 @@ namespace ShiftDiary.Repository
             ISession session = NHibernateHelper.GetCurrentSession();            
             ICriteria criteria = session.CreateCriteria(typeof(T).Name);
             criteria.Add(Expression.Eq("Id", id));
-            return (T)criteria.UniqueResult();
+            var data = (T)criteria.UniqueResult();
+            data.GetHashCode();
+            session.Close();
+            return data;
         }
 
         public virtual void Save(T obj)

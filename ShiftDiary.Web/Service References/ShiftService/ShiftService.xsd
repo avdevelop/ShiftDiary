@@ -51,4 +51,32 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetShiftForMonth">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ShiftDiary.DTO" minOccurs="0" name="month" nillable="true" type="q5:Month" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetShiftForMonthResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ShiftDiary.DTO" minOccurs="0" name="GetShiftForMonthResult" nillable="true" type="q6:ArrayOfShift" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetShiftForDay">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ShiftDiary.DTO" minOccurs="0" name="day" nillable="true" type="q7:Day" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetShiftForDayResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ShiftDiary.DTO" minOccurs="0" name="GetShiftForDayResult" nillable="true" type="q8:ArrayOfShift" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
